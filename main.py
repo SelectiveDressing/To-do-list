@@ -102,7 +102,7 @@ class Task(object):
     def change_list(self,c_task,c_arg,c_new):
         if c_task is not None:
             for item in self.task_list:
-                if c_task in item.values():
+                if item.values()==c_task:
                     if c_arg == "task":
                         item["task"]=c_new
                         print("Your task name changed to {}".format(item["task"]))
@@ -117,10 +117,18 @@ class Task(object):
 
     def save_list(self):
         if self.task_list is not None:
-            for item in self.task_list:
-                data.append(item)
+            for things in self.task_list:
+                flag = False
+                for item in data:
+                    if item["task"] == things["task"]:
+                        item["status"]=things["status"]
+                        item["priority"]=things["priority"]
+                        flag = True
+                if flag == False:
+                    data.append(things)
             with open('old_list.json', 'w') as data_file:
-                json.dump(data, data_file)
+                json.dump(data, data_file,indent=2)
+                data_file.write("\n")
         else:
             print("Nothing to save.")
 
