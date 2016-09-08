@@ -37,12 +37,12 @@ def main():
         elif user == "3":
             task1.get_list()
         elif user == "4":
-            arg = (input("Task to be changed: ")).lower()
-            arg2 = (input("status, priority, or task")).lower()
-            arg3 = (input("change to what?: ")).lower()
+            arg = input("Task to be changed: ")
+            arg2 = input("status, priority, or task")
+            arg3 = input("change to what?: ")
             task1.change_list(arg, arg2, arg3)
         elif user == "5":
-            arg = (input("Sort the list by: status, priority, or task:")).lower()
+            arg = input("Sort the list by: status, priority, or task:")
             task1.sort_list(arg)
 
         elif user == "6":
